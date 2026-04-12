@@ -11,6 +11,6 @@ metadata:
     'fluxcd.io/namespace': flux-system
     'fluxcd.io/name': flux-system
 spec:
-  type: other
+  type: service
   lifecycle: unknown
   owner: H1KKAR1
