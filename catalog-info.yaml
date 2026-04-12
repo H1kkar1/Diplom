@@ -4,6 +4,12 @@ metadata:
   name: Diplom
   annotations:
     github.com/project-slug: H1kkar1/Diplom
+
+    'backstage.io/kubernetes-id': diplom
+    'backstage.io/kubernetes-namespace': flux-system
+    
+    'fluxcd.io/namespace': flux-system
+    'fluxcd.io/name': flux-system
 spec:
   type: other
   lifecycle: unknown
