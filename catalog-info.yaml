@@ -6,14 +6,12 @@ metadata:
   labels:
     app: demo-app
   annotations:
-     github.com/project-slug: H1KKAR1/Diplom
-    
-    # Kubernetes аннотации
+    github.com/project-slug: H1KKAR1/Diplom
+
     'backstage.io/kubernetes-id': diplom
     'backstage.io/kubernetes-namespace': default
     'backstage.io/kubernetes-label-selector': 'app=demo-app'
-    
-    # Flux аннотации
+
     'fluxcd.io/namespace': flux-system
     'fluxcd.io/kustomization': demo-app
     'weave.works/flux-kustomization': demo-app
