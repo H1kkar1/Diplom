@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Diplom
+  name: diplom
   description: Demo application for testing Backstage integration
   labels:
     app: demo-app
