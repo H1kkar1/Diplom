@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Diplom
+  annotations:
+    github.com/project-slug: H1kkar1/Diplom
+spec:
+  type: other
+  lifecycle: unknown
+  owner: H1KKAR1
