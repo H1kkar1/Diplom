@@ -1,0 +1,22 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: demo-app
+  namespace: flux-system
+  labels:
+    app.kubernetes.io/name: demo-app
+    app.kubernetes.io/part-of: diplom
+    backstage.io/kubernetes-id: diplom
+spec:
+  interval: 1m
+  path: ./apps/demo-app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  targetNamespace: default
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: demo-app
+      namespace: default
