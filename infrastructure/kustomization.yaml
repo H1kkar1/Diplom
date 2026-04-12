@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - ingress/
   - rbac/
-  - ../apps/demo-app-flux.yaml
+  - ../apps/demo-app/demo-app-flux.yaml
