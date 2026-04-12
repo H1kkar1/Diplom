@@ -10,7 +10,7 @@ metadata:
 
     'backstage.io/kubernetes-id': diplom
     'backstage.io/kubernetes-namespace': default
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=diplom'
+    'backstage.io/kubernetes-label-selector': 'backstage.io/kubernetes-id=diplom'
 
     'fluxcd.io/namespace': flux-system
     'fluxcd.io/kustomization': demo-app
