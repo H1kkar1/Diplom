@@ -2,15 +2,24 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: Diplom
+  description: Demo application for testing Backstage integration
+  labels:
+    app: demo-app
   annotations:
-    github.com/project-slug: H1kkar1/Diplom
-
-    'backstage.io/kubernetes-id': diplom
-    'backstage.io/kubernetes-namespace': flux-system
+     github.com/project-slug: H1KKAR1/Diplom
     
+    # Kubernetes аннотации
+    'backstage.io/kubernetes-id': diplom
+    'backstage.io/kubernetes-namespace': default
+    'backstage.io/kubernetes-label-selector': 'app=demo-app'
+    
+    # Flux аннотации
     'fluxcd.io/namespace': flux-system
-    'fluxcd.io/name': flux-system
+    'fluxcd.io/kustomization': demo-app
+    'weave.works/flux-kustomization': demo-app
 spec:
   type: service
   lifecycle: unknown
   owner: H1KKAR1
+  providesApis:
+    - demo-app-api
