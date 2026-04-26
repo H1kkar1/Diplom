@@ -10,11 +10,9 @@ kind: ClusterRole
 metadata:
   name: backstage-reader
 rules:
-# Доступ ко всем ресурсам во всех API группах - ТОЛЬКО ЧТЕНИЕ
 - apiGroups: ["*"]
   resources: ["*"]
   verbs: ["get", "list", "watch"]
-# Доступ к non-resource эндпоинтам
 - nonResourceURLs: ["*"]
   verbs: ["get"]
 ---
