@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: backstage-reader
-  namespace: flux-system
+  namespace: default  # ← ПОМЕНЯЛИ на default
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -23,7 +23,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: backstage-reader
-  namespace: flux-system
+  namespace: default  # ← И ТУТ НА default
 roleRef:
   kind: ClusterRole
   name: backstage-reader
@@ -33,7 +33,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backstage-reader-token
-  namespace: flux-system
+  namespace: default  # ← И ТУТ НА default
   annotations:
     kubernetes.io/service-account.name: backstage-reader
 type: kubernetes.io/service-account-token
