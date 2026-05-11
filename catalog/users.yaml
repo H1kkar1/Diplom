@@ -2,7 +2,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: H1KKAR1
+  name: h1kkar1
 spec:
   profile:
     displayName: Hikar1
