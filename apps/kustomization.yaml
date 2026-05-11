@@ -1,14 +1,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: applications
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./infrastructure
+  path: ./apps
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: flux-system
+    - name: infrastructure
+    - name: postgres-instances
+    - name: redis-instances
+    - name: rabbitmq-instances
