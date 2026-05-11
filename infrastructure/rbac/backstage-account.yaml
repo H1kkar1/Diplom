@@ -1,14 +1,20 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+<<<<<<< HEAD
   name: backstage
   namespace: backstage
+=======
+  name: backstage-reader
+  namespace: default  # ← ПОМЕНЯЛИ на default
+>>>>>>> f159a3187706d0e83a9b29361a990de2fd747a0b
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: backstage-catalog-role
 rules:
+<<<<<<< HEAD
   - apiGroups: [""]
     resources: ["pods", "services", "configmaps", "secrets", "namespaces"]
     verbs: ["get", "list", "watch"]
@@ -27,12 +33,20 @@ rules:
   - apiGroups: ["kustomize.toolkit.fluxcd.io"]
     resources: ["kustomizations"]
     verbs: ["get", "list", "watch", "create", "update", "patch"]
+=======
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["get", "list", "watch"]
+- nonResourceURLs: ["*"]
+  verbs: ["get"]
+>>>>>>> f159a3187706d0e83a9b29361a990de2fd747a0b
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: backstage-catalog-binding
 subjects:
+<<<<<<< HEAD
   - kind: ServiceAccount
     name: backstage
     namespace: backstage
@@ -40,3 +54,34 @@ roleRef:
   kind: ClusterRole
   name: backstage-catalog-role
   apiGroup: rbac.authorization.k8s.io
+=======
+- kind: ServiceAccount
+  name: backstage-reader
+  namespace: default  # ← И ТУТ НА default
+roleRef:
+  kind: ClusterRole
+  name: backstage-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: backstage-cluster-view-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: flux-view-flux-system  # Стандартная роль просмотра Flux
+subjects:
+  - kind: ServiceAccount
+    name: backstage-reader
+    namespace: default
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backstage-reader-token
+  namespace: default  # ← И ТУТ НА default
+  annotations:
+    kubernetes.io/service-account.name: backstage-reader
+type: kubernetes.io/service-account-token
+>>>>>>> f159a3187706d0e83a9b29361a990de2fd747a0b
