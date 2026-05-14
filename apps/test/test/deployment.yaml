@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 
+  namespace: 
+  labels:
+    app: 
+    team: 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 
+  template:
+    metadata:
+      labels:
+        app: 
+        team: 
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/your-org/:latest
+        ports:
+        - containerPort: 
+        env:
+        - name: NAMESPACE
+          value: 
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
