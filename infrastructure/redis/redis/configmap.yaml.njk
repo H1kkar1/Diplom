@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: -config
+  namespace: 
+data:
+  redis.conf: |
+    maxmemory 
+    maxmemory-policy allkeys-lru
+    appendonly yes
+    save 900 1
+    save 300 10 
