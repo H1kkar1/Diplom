@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-service-test
+  namespace: default
+  labels:
+    app: python-service-test
+    team: python-service-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-service-test
+  template:
+    metadata:
+      labels:
+        app: python-service-test
+        team: python-service-test
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/your-org/python-service-test:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: NAMESPACE
+          value: default
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

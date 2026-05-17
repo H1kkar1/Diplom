@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: python-service-test
+  namespace: flux-system
+  labels:
+    app: python-service-test
+    team: python-service-test
+spec:
+  interval: 5m
+  path: ./apps/python-service-test/python-service-test
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: python-service-test
+      namespace: default
