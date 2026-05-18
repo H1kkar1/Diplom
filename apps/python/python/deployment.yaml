@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: ghcr.io/your-org/python:latest
+        image: hikkari/test-python-service:576fa2053cb13d638f029fe68834abc34d2e8bc2
         ports:
         - containerPort: 8000
         env:
