@@ -1,14 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: test
+  name: test-python-service
   namespace: flux-system
-  labels:
-    app: test
-    team: test
 spec:
   interval: 5m
-  path: ./apps/test/test
+  path: ./apps/test/test_python.gittest
   prune: true
   sourceRef:
     kind: GitRepository
@@ -16,5 +13,5 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
-      name: test
+      name: test-python-service
       namespace: test
