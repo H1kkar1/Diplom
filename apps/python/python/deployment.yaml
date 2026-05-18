@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python
+  namespace: python
+  labels:
+    app: python
+    team: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+        team: python
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/your-org/python:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: NAMESPACE
+          value: python
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
